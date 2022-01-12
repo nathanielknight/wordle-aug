@@ -74,7 +74,6 @@ agony
 agora
 agree
 ahead
-ain't
 aisle
 aitch
 akene
@@ -478,7 +477,6 @@ bowse
 boxer
 boyar
 boyla
-br'er
 brace
 brach
 bract
@@ -598,7 +596,6 @@ camel
 cameo
 campo
 campy
-can't
 canal
 candy
 canna
@@ -1047,7 +1044,6 @@ doing
 dolce
 dolly
 dolor
-don't
 donee
 donga
 donna
@@ -1856,7 +1852,6 @@ irate
 irons
 irony
 islet
-isn't
 issue
 istle
 itchy
@@ -2044,7 +2039,6 @@ lemur
 lenis
 lento
 leper
-let's
 letch
 letup
 levee
@@ -2159,7 +2153,6 @@ lysis
 lyssa
 lytic
 lytta
-ma'am
 macaw
 macle
 madam
@@ -2366,7 +2359,6 @@ navar
 navel
 navvy
 nawab
-ne'er
 neath
 needs
 needy
@@ -3096,8 +3088,6 @@ sharp
 shave
 shawl
 shawm
-she'd
-she's
 sheaf
 shear
 sheen
@@ -3521,7 +3511,6 @@ sycee
 sylph
 synod
 syrup
-ta'en
 tabby
 tabes
 table
@@ -3935,8 +3924,6 @@ watch
 water
 waver
 waxen
-we're
-we've
 weald
 weary
 weave
@@ -3975,7 +3962,6 @@ whisk
 whist
 white
 whity
-who's
 whole
 whomp
 whoop
