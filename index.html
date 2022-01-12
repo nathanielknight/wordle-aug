@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle-Aug</title>
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        @media screen and (min-width: 320px) {
+            html {
+                font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            html {
+                font-size: 22px;
+            }
+        }
+
+        body {
+            max-width: 35em;
+            margin: auto;
+            padding: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        #results {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .exclude-letter {
+            font-size: 80%;
+            padding: 0 1em;
+            ;
+            display: inline-block;
+        }
+
+        .exclude-letter::before {
+            content: attr("data-letter");
+        }
+
+        #pattern-input {
+            width: 3.5em;
+            font-size: 100%;
+            font-family: inherit;
+        }
+
+        #input-fieldset p {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #clear-all {
+            margin: 1em;
+        }
+
+        #exclude-letters div span {
+            display: inline-block;
+            padding: 0.1em;
+        }
+
+        #exclude-letters label input {
+            display: none;
+        }
+
+        #exclude-letters label input:checked+span.check-letter {
+            text-decoration: line-through;
+            color: #a23d2a;
+            text-decoration-thickness: 10%;
+            font-weight: normal;
+
+        }
+
+        #exclude-letters label input+span.check-letter {
+            text-decoration: none;
+            width: 1em;
+            font-weight: bold;
+        }
+
+        input#search-button {
+            font-size: 150%;
+            margin: 1em;
+        }
+
+        details {
+            text-align: left;
+            font-size: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <details>
+        <summary>About</summary>
+        <p>
+            A tool by <a href="https://nathanielknight.ca">Nat Knight</a> for
+            playing <a href="https://www.powerlanguage.co.uk/wordle">Wordle</a>. </p>
+
+        <p>
+            Search a list of five-letter words by filtering on a regular
+            expression and then removing any excluded letters.
+        </p>
+
+        <p>Searches are not case sensitive.</p>
+
+        <p>Word-list generated from the <a href="https://www.gutenberg.org/ebooks/3201">Moby Word List</a> by Grady Ward.</p>
+
+        <p>Source code is available <a href="#">here</a>.</p>
+    </details>
+    <div id="controls">
+        <fieldset id="input-fieldset">
+            <legend>RegEx</legend>
+            <p>^<input id="pattern-input" type="search" name="pattern" />$</p>
+        </fieldset>
+        <fieldset id="exclude-letters">
+            <legend>Exclude words containing:</legend>
+            <div>
+                <label><input type="checkbox" class="exclude-letter" data-letter="q"><span
+                        class="check-letter">Q</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="w"><span
+                        class="check-letter">W</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="e"><span
+                        class="check-letter">E</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="r"><span
+                        class="check-letter">R</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="t"><span
+                        class="check-letter">T</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="y"><span
+                        class="check-letter">Y</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="u"><span
+                        class="check-letter">U</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="i"><span
+                        class="check-letter">I</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="o"><span
+                        class="check-letter">O</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="p"><span
+                        class="check-letter">P</span></label>
+            </div>
+            <div>
+                <label><input type="checkbox" class="exclude-letter" data-letter="a"><span
+                        class="check-letter">A</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="s"><span
+                        class="check-letter">S</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="d"><span
+                        class="check-letter">D</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="f"><span
+                        class="check-letter">F</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="g"><span
+                        class="check-letter">G</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="h"><span
+                        class="check-letter">H</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="j"><span
+                        class="check-letter">J</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="k"><span
+                        class="check-letter">K</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="l"><span
+                        class="check-letter">L</span></label>
+            </div>
+            <div>
+                <label><input type="checkbox" class="exclude-letter" data-letter="z"><span
+                        class="check-letter">Z</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="x"><span
+                        class="check-letter">X</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="c"><span
+                        class="check-letter">C</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="v"><span
+                        class="check-letter">V</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="b"><span
+                        class="check-letter">B</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="n"><span
+                        class="check-letter">N</span></label>
+                <label><input type="checkbox" class="exclude-letter" data-letter="m"><span
+                        class="check-letter">M</span></label>
+            </div>
+            <input type="button" value="Reset" id="reset-exclude" />
+        </fieldset>
+        <input type="button" value="Search" id="search-button">
+    </div>
+    <p id="status"></p>
+    <div id="results"> </div>
+    <script type="module" src="words.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>

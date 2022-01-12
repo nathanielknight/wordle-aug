@@ -1,0 +1,8 @@
+(task "build"
+  (empty-dir "dist")
+  (par
+    (exec py gen-words.py)
+    (copy index.html "./dist/")
+    (exec tsc)
+  )
+)

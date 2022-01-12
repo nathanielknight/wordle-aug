@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Rhiz build",
+			"type": "shell",
+			"command": "rhiz",
+			"args": ["build"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+
+		}
+	]
+}
