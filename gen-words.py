@@ -11,5 +11,5 @@ def write_output(outf: ty.TextIO, words: ty.List[str]) -> None:
 with open("./words.txt", "r") as inf:
     words = [s.strip() for s in inf.readlines()]
 
-with open("./dist/words.js", "w") as outf:
+with open("./docs/words.js", "w") as outf:
     write_output(outf, words)
