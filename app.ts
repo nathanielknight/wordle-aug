@@ -19,7 +19,7 @@ function getParams(): Params {
 }
 
 function matchingWords({ query, exclude }: Params): ReadonlyArray<string> {
-    let matchPattern = new RegExp(`^${query}$`, "i");
+    let matchPattern = new RegExp(query, "i");
     let excludePattern = new RegExp(`[${Array.from(exclude).join('')}]`, "i");
     console.debug(`Matching on '${matchPattern}', excluding on '${excludePattern}'`);
     let matched = Array.from(WORDS as ReadonlyArray<string>)

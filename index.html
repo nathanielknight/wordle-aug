@@ -47,9 +47,10 @@
         }
 
         #pattern-input {
-            width: 3.5em;
+            width: 10em;
             font-size: 100%;
             font-family: inherit;
+            text-align: left;
         }
 
         #input-fieldset p {
@@ -103,8 +104,9 @@
             playing <a href="https://www.powerlanguage.co.uk/wordle">Wordle</a>. </p>
 
         <p>
-            Search a list of five-letter words by filtering on a regular
-            expression and then removing any excluded letters.
+            Search a list of five-letter words by filtering on a
+            <a href="https://regexr.com/">regular expression</a>
+            and then removing any excluded letters.
         </p>
 
         <p>Searches are not case sensitive.</p>
@@ -124,7 +126,7 @@
     <div id="controls">
         <fieldset id="input-fieldset">
             <legend>RegEx</legend>
-            <p>^<input id="pattern-input" type="input" name="pattern" />$</p>
+            <p><input id="pattern-input" type="input" name="pattern" autocomplete="off"/></p>
         </fieldset>
         <fieldset id="exclude-letters">
             <legend>Exclude words containing:</legend>
