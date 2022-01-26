@@ -61,12 +61,12 @@
             margin: 1em;
         }
 
-        #exclude-letters div span {
+        .letters div span {
             display: inline-block;
             padding: 0.1em;
         }
 
-        #exclude-letters label input {
+        .letters label input {
             display: none;
         }
 
@@ -84,9 +84,26 @@
             font-weight: bold;
         }
 
+        #include-letters label input:checked+span.check-letter {
+            font-weight: bold;
+            background-color: magenta;  
+            color: magenta;
+        }
+
+        #include-letters label input+span.check-letter {
+            font-weight: normal;
+            width: 1em;
+        }
+
         input#search-button {
             font-size: 150%;
             margin: 1em;
+        }
+
+        #include-letters label input:checked+span.check-letter {
+            font-weight: bold;
+            background-color: #4b6b68;
+            color: white;
         }
 
         details {
@@ -127,7 +144,7 @@
             <legend>RegEx</legend>
             <p><input id="pattern-input" type="input" name="pattern" autocomplete="off" autocorrect="off"/></p>
         </fieldset>
-        <fieldset id="exclude-letters">
+        <fieldset id="exclude-letters" class="letters">
             <legend>Exclude words containing:</legend>
             <div>
                 <label><input type="checkbox" class="exclude-letter" data-letter="q"><span
@@ -188,6 +205,68 @@
                         class="check-letter">M</span></label>
             </div>
             <input type="button" value="Reset" id="reset-exclude" />
+        </fieldset>
+        <fieldset id="include-letters" class="letters">
+            <legend>Include only words containing:</legend>
+            <div>
+                <label><input type="checkbox" class="include-letter" data-letter="q"><span
+                        class="check-letter">Q</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="w"><span
+                        class="check-letter">W</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="e"><span
+                        class="check-letter">E</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="r"><span
+                        class="check-letter">R</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="t"><span
+                        class="check-letter">T</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="y"><span
+                        class="check-letter">Y</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="u"><span
+                        class="check-letter">U</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="i"><span
+                        class="check-letter">I</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="o"><span
+                        class="check-letter">O</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="p"><span
+                        class="check-letter">P</span></label>
+            </div>
+            <div>
+                <label><input type="checkbox" class="include-letter" data-letter="a"><span
+                        class="check-letter">A</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="s"><span
+                        class="check-letter">S</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="d"><span
+                        class="check-letter">D</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="f"><span
+                        class="check-letter">F</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="g"><span
+                        class="check-letter">G</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="h"><span
+                        class="check-letter">H</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="j"><span
+                        class="check-letter">J</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="k"><span
+                        class="check-letter">K</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="l"><span
+                        class="check-letter">L</span></label>
+            </div>
+            <div>
+                <label><input type="checkbox" class="include-letter" data-letter="z"><span
+                        class="check-letter">Z</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="x"><span
+                        class="check-letter">X</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="c"><span
+                        class="check-letter">C</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="v"><span
+                        class="check-letter">V</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="b"><span
+                        class="check-letter">B</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="n"><span
+                        class="check-letter">N</span></label>
+                <label><input type="checkbox" class="include-letter" data-letter="m"><span
+                        class="check-letter">M</span></label>
+            </div>
+            <input type="button" value="Reset" id="reset-include" />
         </fieldset>
         <input type="button" value="Search" id="search-button">
     </div>

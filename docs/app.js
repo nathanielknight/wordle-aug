@@ -5,19 +5,26 @@ function getParams() {
     const exclude = new Set();
     for (const elt of document.getElementsByClassName("exclude-letter")) {
         if (elt.checked) {
-            exclude.add(elt.dataset['letter']);
+            exclude.add(elt.dataset["letter"]);
+        }
+    }
+    const include = new Set();
+    for (const elt of document.getElementsByClassName("include-letter")) {
+        if (elt.checked) {
+            include.add(elt.dataset["letter"]);
         }
     }
     console.debug('collected params:', { query, exclude });
-    return { query, exclude };
+    return { query, exclude, include };
 }
-function matchingWords({ query, exclude }) {
+function matchingWords({ query, exclude, include }) {
     let matchPattern = new RegExp(query, "i");
     let excludePattern = new RegExp(`[${Array.from(exclude).join('')}]`, "i");
     console.debug(`Matching on '${matchPattern}', excluding on '${excludePattern}'`);
     let matched = Array.from(WORDS)
         .filter(w => Boolean(w.match(matchPattern)))
-        .filter(w => !Boolean(w.match(excludePattern)));
+        .filter(w => !Boolean(w.match(excludePattern)))
+        .filter(w => Array.from(include).every(l => w.includes(l)));
     return matched;
 }
 function setResults(words) {

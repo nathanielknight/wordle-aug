@@ -3,6 +3,7 @@ import { WORDS } from "./words.js"
 interface Params {
     query: string,
     exclude: Set<string>,
+    include: Set<string>,
 }
 
 function getParams(): Params {
@@ -11,20 +12,27 @@ function getParams(): Params {
     const exclude: Set<string> = new Set();
     for (const elt of document.getElementsByClassName("exclude-letter") as HTMLCollectionOf<HTMLInputElement>) {
         if (elt.checked) {
-            exclude.add(elt.dataset['letter'] as string)
+            exclude.add(elt.dataset["letter"] as string)
+        }
+    }
+    const include: Set<string> = new Set();
+    for (const elt of document.getElementsByClassName("include-letter") as HTMLCollectionOf<HTMLInputElement>) {
+        if (elt.checked) {
+            include.add(elt.dataset["letter"] as string)
         }
     }
     console.debug('collected params:', { query, exclude });
-    return { query, exclude };
+    return { query, exclude, include };
 }
 
-function matchingWords({ query, exclude }: Params): ReadonlyArray<string> {
+function matchingWords({ query, exclude, include }: Params): ReadonlyArray<string> {
     let matchPattern = new RegExp(query, "i");
     let excludePattern = new RegExp(`[${Array.from(exclude).join('')}]`, "i");
     console.debug(`Matching on '${matchPattern}', excluding on '${excludePattern}'`);
     let matched = Array.from(WORDS as ReadonlyArray<string>)
         .filter(w => Boolean(w.match(matchPattern)))
-        .filter(w => !Boolean(w.match(excludePattern)));
+        .filter(w => !Boolean(w.match(excludePattern)))
+        .filter(w => Array.from(include).every(l => w.includes(l)));
     return matched;
 }
 
